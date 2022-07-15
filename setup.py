@@ -11,27 +11,32 @@ from setuptools import find_packages, setup
 
 import subprocess
 
+import logging
+
 if sys.version_info < (3, 5):
     raise RuntimeError(
         "Mapilio Calculation supports Python 3.6 and above. "
     )
 
 req = ["addict==2.4.0",
-            "geographiclib==1.50",
-            "numpy",
-            "opencv-python==4.5.1.48",
-            "solve==0.0.0",
-            "trianglesolver==1.2",
-            "helper-mapilio",
-            "ExifRead==2.3.2",
-            "pytz==2021.1",
-            "requests==2.25.1",
-            "scipy",
-            "pandas",
-            "matplotlib"
+       "geographiclib==1.50",
+       "numpy",
+       "opencv-python==4.5.1.48",
+       "solve==0.0.0",
+       "trianglesolver==1.2",
+       "helper-mapilio",
+       "ExifRead==2.3.2",
+       "pytz==2021.1",
+       "requests==2.25.1",
+       "scipy",
+       "pandas",
+       "matplotlib"
        ]
 for package in req:
-    subprocess.run(f"pip install {package}", shell=True)
+    p = subprocess.run(f"pip install {package}", shell=True)
+    if p.returncode != 0:
+        logging.info(f"Failed installing package {package}")
+
 
 
 # This import must be below the above `sys.version_info` check,
