@@ -23,10 +23,6 @@ from increment_version import __version__
 from calculation.util import __name__
 
 INSTALL_REQUIRES = [
-    'numpy',
-    'solve',
-    'trianglesolver',
-    'geopy',
     'helper-mapilio',
     'scipy'
 ]
